@@ -5,3 +5,17 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+puts "Cleaning database..."
+
+Tag.destroy_all
+print "."
+
+puts "Database cleaned!"
+
+puts "Creating tags..."
+
+tag_entre_amis = Tag.create!(title: "entre amis")
+print "."
+
+puts "Tags created!"
