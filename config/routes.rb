@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
-  ressources :dishes
-  ressources :tags
-  ressources :join_dishes_tags
+  resources :dishes
+  resources :tags
+  resources :join_dishes_tags
 end
