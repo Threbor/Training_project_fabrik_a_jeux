@@ -9,4 +9,7 @@ Rails.application.routes.draw do
   resources :dishes
   resources :tags
   resources :join_dishes_tags
+  resources :orders
+  resources :ordered_items
+
 end

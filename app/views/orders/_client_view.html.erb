@@ -1,0 +1,32 @@
+Hello client
+
+
+<% @orders.sort_by(&:created_at).reverse.each do |order| %>
+  <p>Commande en date du <%= order.created_at.strftime("%d %B %Y à %H:%M") %></p>
+  <p><%= order.status %></p>
+  <div>
+    <%= form_with url: order_path(order), method: :patch, data: {turbo_confirm: "Une fois votre commande passée, vous ne pourrez plus la modifier. Veuillez confirmer votre commande" }, local: true do |f| %>
+      <%= f.hidden_field :order_id, value: order.id, name: "order[order_id]" %>
+      <%= f.hidden_field :status, value: "ordered", name: "order[status]" %>
+      <%= f.submit "Commander" %>
+    <% end %>
+  </div>
+
+  <div class="dish_card_container">
+    <% order.ordered_items.reverse.each do |ordered_item| %>
+      <%= link_to dish_path(ordered_item.dish), class:"dish_card" do %>
+        <%= if ordered_item.dish.photo &&  ordered_item.dish.photo != "no photo" then image_tag ordered_item.dish.photo end %>
+        <div class="dish_card_titleprice">
+          <p><%= ordered_item.dish.title %></p>
+          <p><%= ordered_item.dish.price %></p>
+        </div>
+        <div class="dish_card_description">
+          <p><%= ordered_item.dish.description %></p>
+        </div>
+      <% end %>
+      <%= link_to ordered_item_path(ordered_item), data: { turbo_method: :delete, turbo_confirm: "Êtes-vous sûr de vouloir décommander cet élement?" } do %>
+        <p>Décommander</p>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>

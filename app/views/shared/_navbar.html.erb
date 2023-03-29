@@ -1,7 +1,19 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid">
-    <%= link_to "#", class: "navbar-brand" do %>
-      <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
+    <%= link_to root_path, class: "navbar-brand" do %>
+      <%= image_tag "Hugo_R_la_fabrique_a_jeu_restaurant_ludique_bc24a1a9-73f8-48ab-b802-d2704e4ec8a0.png" %>
+    <% end %>
+
+    <%= link_to dishes_path do %>
+      <div>
+        <h6>Le menu</h6>
+      </div>
+    <% end %>
+
+    <%= link_to orders_path do %>
+      <div>
+        <h6>Mes commandes</h6>
+      </div>
     <% end %>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

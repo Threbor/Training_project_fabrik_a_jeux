@@ -1,0 +1,42 @@
+.dish_form_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+  width: 500px;
+}
+
+.dish_form_group {
+  margin-bottom: 20px;
+}
+
+.dish_form_label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.dish_form_control {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.dish_btn {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.dish_btn:hover {
+  background-color: #0069d9;
+}
