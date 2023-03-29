@@ -1,0 +1,37 @@
+
+<% Order.all.where.not(status: "pending").sort_by(&:created_at).reverse.each do |order| %>
+  <p>Commande en date du <%= order.created_at.strftime("%d %B %Y à %H:%M") %></p>
+  <p> par le client n°<%= order.user.id %></p>
+  <p>Statu de la commande<%= order.status %></p>
+  <p>Table n°<%= order.user.id + rand(1..10)%></p>
+  <div>
+    <%= form_with url: order_path(order), method: :patch, data: {turbo: false}, local: true do |f| %>
+      <%= f.hidden_field :order_id, value: order.id, name: "order[order_id]" %>
+      <%= f.hidden_field :status, value: "served", name: "order[status]" %>
+      <%= f.submit "Service ok!" %>
+    <% end %>
+    <%= form_with url: order_path(order), method: :patch, data: {turbo: false}, local: true do |f| %>
+      <%= f.hidden_field :order_id, value: order.id, name: "order[order_id]" %>
+      <%= f.hidden_field :status, value: "payed", name: "order[status]" %>
+      <%= f.submit "Payé ok" %>
+    <% end %>
+  </div>
+
+  <div class="dish_card_container">
+    <% order.ordered_items.reverse.each do |ordered_item| %>
+      <%= link_to dish_path(ordered_item.dish), class:"dish_card" do %>
+        <%= if ordered_item.dish.photo &&  ordered_item.dish.photo != "no photo" then image_tag ordered_item.dish.photo end %>
+        <div class="dish_card_titleprice">
+          <p><%= ordered_item.dish.title %></p>
+          <p><%= ordered_item.dish.price %></p>
+        </div>
+        <div class="dish_card_description">
+          <p><%= ordered_item.dish.description %></p>
+        </div>
+      <% end %>
+      <%= link_to ordered_item_path(ordered_item), data: { turbo_method: :delete, turbo_confirm: "Êtes-vous sûr de vouloir décommander cet élement?" } do %>
+        <p>Décommander</p>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>

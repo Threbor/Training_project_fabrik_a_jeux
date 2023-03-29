@@ -1,2 +1,15 @@
-<h1>Dishes#show</h1>
-<p>Find me in app/views/dishes/show.html.erb</p>
+<div class="dish_card_show_container">
+  <h1><%= @dish.title %></h1>
+  <div class="dish_card_show">
+    <%= if @dish.photo &&  @dish.photo != "no photo" then image_tag @dish.photo end %>
+    <p><%= @dish.price %></p>
+    <p><%= @dish.description %></p>
+  </div>
+  <%= link_to dish_path(@dish), data: { turbo_method: :delete, turbo_confirm: "Êtes-vous sûr de vouloir supprimer ce plat ?" } do %>
+    <p>Supprimer</p>
+  <% end %>
+
+  <%= link_to edit_dish_path(@dish) do %>
+    <p>Modifier</p>
+  <% end %>
+</div>

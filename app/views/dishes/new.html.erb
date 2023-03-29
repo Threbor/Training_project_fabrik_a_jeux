@@ -1,2 +1,27 @@
-<h1>Dishes#new</h1>
-<p>Find me in app/views/dishes/new.html.erb</p>
+<div class="dish_form_container">
+  <%= form_with model: @dish do |form| %>
+    <div class="dish_form_group">
+      <%= form.label :title, class: "dish_form_label" %>
+      <%= form.text_field :title, class: "dish_form_control" %>
+    </div>
+
+    <div class="dish_form_group">
+      <%= form.label :photo, class: "dish_form_label" %>
+      <%= form.text_field :photo, class: "dish_form_control" %>
+    </div>
+
+    <div class="dish_form_group">
+      <%= form.label :price, class: "dish_form_label" %>
+      <%= form.text_field :price, class: "dish_form_control" %>
+    </div>
+
+    <div class="dish_form_group">
+      <%= form.label :description, class: "dish_form_label" %>
+      <%= form.text_area :description, class: "dish_form_control" %>
+    </div>
+
+    <div class="dish_form_group">
+      <%= form.submit "Enregistrer", class: "dish_btn" %>
+    </div>
+  <% end %>
+</div>

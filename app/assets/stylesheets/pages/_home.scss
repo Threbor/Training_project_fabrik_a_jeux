@@ -1,1 +1,18 @@
 // Specific CSS for your home-page
+.home_banner {
+  background: url('Hugo_R_la_fabrique_a_jeu_restaurant_ludique_bc24a1a9-73f8-48ab-b802-d2704e4ec8a0.png') no-repeat center center;
+  background-size: cover;
+  min-height: 100vh;
+  width: 100%;
+}
+
+.home_banner_text {
+  color: white;
+  font-size: 2em;
+  font-weight: bold;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
